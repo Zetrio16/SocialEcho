@@ -4,7 +4,9 @@ const Token = require("../models/token.model");
 const JwtStrategy = require("passport-jwt").Strategy,
   ExtractJwt = require("passport-jwt").ExtractJwt;
 const passport = require("passport");
+
 const opts = {};
+
 const jwt = require("jsonwebtoken");
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = process.env.SECRET;
