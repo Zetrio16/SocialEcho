@@ -8,14 +8,16 @@ services:
       - "4000:4000"
     env_file:
       - ./server/.env
-    # depends_on:
-    #   - mongo
+    depends_on:
+      - mongo
 
   frontend:
     build:
       context: ./client
     ports:
       - "3000:80"
+    environment:
+      - REACT_APP_API_URL=http://host.docker.internal:4000
 
   mongo:
     image: mongo:latest
