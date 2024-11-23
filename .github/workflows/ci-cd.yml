@@ -40,7 +40,7 @@ jobs:
       # 6. Push Docker images to Docker Hub or GitHub Container Registry
       - name: Push Docker images
         run: |
-          echo "${{ secrets.Jry_Uh.7FWf4TSt }}" | docker login -u "${{ secrets.ruperix16 }}" --password-stdin
+          echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME  }}" --password-stdin
           docker tag my-frontend:latest ruperix16/my-frontend:latest
           docker tag my-backend:latest ruperix16/my-backend:latest
           docker push ruperix16/my-frontend:latest
