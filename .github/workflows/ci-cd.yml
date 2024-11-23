@@ -46,14 +46,20 @@ jobs:
           docker push ruperix16/my-frontend:latest
           docker push ruperix16/my-backend:latest
 
-      # 7. Install Docker Compose
+      # 7. Create Backend .env File
+      - name: Create Backend .env File
+        run: |
+          echo "DATABASE_URL=mongodb://mongo:27017/mydb" >> server/.env
+          echo "JWT_SECRET=your-secret-key" >> server/.env
+
+      # 8. Install Docker Compose
       - name: Install Docker Compose
         run: |
           sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
           sudo chmod +x /usr/local/bin/docker-compose
           docker-compose version
 
-      # 8. Deploy with Docker Compose
+      # 9. Deploy with Docker Compose
       - name: Deploy with Docker Compose
         run: |
           docker-compose -f docker-compose.yaml up -d
