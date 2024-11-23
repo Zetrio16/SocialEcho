@@ -10,14 +10,19 @@ services:
       - ./server/.env
     depends_on:
       - mongo
+    networks:
+      - app-network
 
   frontend:
     build:
       context: ./client
     ports:
-      - "3000:80"
+      - "3000:3000"
     environment:
       - REACT_APP_API_URL=http://host.docker.internal:4000
+      # - REACT_APP_API_URL=http://backend:4000
+    networks:
+      - app-network
 
   mongo:
     image: mongo:latest
@@ -26,6 +31,12 @@ services:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
 
 volumes:
   mongo-data:

@@ -8,6 +8,7 @@
  */
 
 import { lazy, Suspense } from "react";
+import { useEffect } from 'react';
 import { useSelector } from "react-redux";
 import { Routes, Route, Navigate } from "react-router-dom";
 import FallbackLoading from "./components/loader/FallbackLoading";
@@ -19,8 +20,15 @@ import SignIn from "./pages/SignIn";
 const AdminPanel = lazy(() => import("./pages/AdminPanel"));
 const AdminSignIn = lazy(() => import("./pages/AdminSignIn"));
 
+
 const App = () => {
   const userData = useSelector((state) => state.auth?.userData);
+
+  useEffect(() => {
+    const apiUrl = process.env.REACT_APP_API_URL;
+    console.log('API URL:', apiUrl);  // This will print the API URL to the console
+  }, []);
+
   const adminAccessToken = JSON.parse(
     localStorage.getItem("admin")
   )?.accessToken;
