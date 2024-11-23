@@ -178,5 +178,5 @@ https://youtu.be/Tmncayg7FeU
 
 ## License
 
-This project is licensed under the [MIT License](https://github.com/nz-m/SocialEcho/blob/main/LICENSE).
+This project is licensed under the [MIT License](https://github.com/Zetrio16/SocialEcho/blob/main/LICENSE).
 
