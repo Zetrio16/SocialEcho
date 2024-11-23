@@ -22,7 +22,7 @@ services:
       - REACT_APP_API_URL=http://host.docker.internal:4000
     networks:
       - app-network
-
+ 
   mongo:
     image: mongo:latest
     container_name: mongo-1
